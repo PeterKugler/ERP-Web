@@ -1,0 +1,49 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+    Accounting
+{% endblock%}
+
+{% block content %}
+    <h2> Accounting Menu</h2>
+    <ul>
+
+        <li>Show database</li>
+        <details>
+            <summary>Database</summary>
+                 <table border="2">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>day</th>
+                <th>month</th>
+                <th>year</th>
+                <th>transaction direction</th>
+                <th>value</th>
+            </tr>
+        </thead>
+
+        {% for item in table %}
+        <tr>
+            <td>{{ item[0] }}</td>
+            <td>{{ item[1] }} </td>
+            <td>{{ item[2] }}</td>
+            <td>{{ item[3] }}</td>
+            <td>{{ item[4] }}</td>
+            <td>{{ item[5] }}</td>
+        </tr>
+        {% endfor %}
+
+        </table>
+
+        </details>
+        <li> <a href="{{ url_for('add_record') }}">Add new record</a> </li>
+        <li> Remove item from database </li>
+        <li> Update existing item </li>
+        <li> Show year with highest profit</li>
+        <li> Show average (per item) profit in a given year</li>
+    </ul>
+
+
+
+{% endblock %}

@@ -1,0 +1,48 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+    Add record
+{% endblock%}
+
+{% block content %}
+    <h2> Add record</h2>
+
+    <form action="{{ form_url }}"
+          method="post">
+    <input type="hidden" name="ID" value="{{ item[0] }}">
+    <p>
+        <label for="day">day</label><br>
+        <input type="number" name="day" id="day" min="1" max="31" step="1"
+               value="{{ item[1] }}" required>
+    </p>
+    <p>
+        <label for="month">month</label><br>
+        <input type="number" name="month" id="month" min="1" max="12" step="1"
+               value="{{ item[2] }}" required>
+    </p>
+    <p>
+        <label for="year">year</label><br>
+        <input type="number" name="year" id="year" min="1" max="9999" step="1"
+               value="{{ item[4] }}" required>
+    </p>
+    {% if item[5] is defined %}
+        <p>
+            <label for="trans_dir">transaction direction</label><br>
+            <select name="trans_dir" id="trans_dir">
+                   value="{{ item[5] }}" required>
+                <option value="in">in</option>
+                <option value="out">out</option>
+            </select>
+     {% endif %}
+        </p>
+    <p>
+        <label for="value">value</label><br>
+        <input type="number" name="value" id="value" step="1"
+               value="{{ item[6] }}" required>
+    </p>
+    <p>
+        <button type="submit"> Add record </button>
+    </p>
+    </form>
+
+{% endblock %}

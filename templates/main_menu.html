@@ -1,0 +1,14 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+    ERP Main menu
+{% endblock%}
+
+{% block content %}
+    <h1> ERP Web Main Menu</h1>
+    <ul>
+        <li> <a href="{{ url_for('accounting') }}"> Accounting </a> </li>
+        <li> <a href="{{ url_for('crm') }}"> Customer Relationship Management  </a> </li>
+
+    </ul>
+{% endblock %}
