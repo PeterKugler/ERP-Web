@@ -6,12 +6,9 @@
 
 {% block content %}
     <h2> Accounting Menu</h2>
-    <ul>
-
-        <li>Show database</li>
-        <details>
-            <summary>Database</summary>
-                 <table border="2">
+    <p> <a href="{{ url_for('add_record') }}">Add new record</a> </p>
+    <h3>Database</h3>
+        <table border="2">
         <thead>
             <tr>
                 <th>ID</th>
@@ -36,11 +33,7 @@
         {% endfor %}
 
         </table>
-
-        </details>
-        <li> <a href="{{ url_for('add_record') }}">Add new record</a> </li>
-        <li> Remove item from database </li>
-        <li> Update existing item </li>
+    <ul>
         <li> Show year with highest profit</li>
         <li> Show average (per item) profit in a given year</li>
     </ul>

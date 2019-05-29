@@ -1,29 +1,28 @@
 {% extends 'layout.html' %}
 
 {% block title %}
-    Add record
+    {{ page_title }}
 {% endblock%}
 
 {% block content %}
-    <h2> Add record</h2>
+    <h2> {{ page_title }}</h2>
 
     <form action="{{ form_url }}"
           method="post">
-    <input type="hidden" name="ID" value="{{ item[0] }}">
     <p>
         <label for="day">day</label><br>
         <input type="number" name="day" id="day" min="1" max="31" step="1"
-               value="{{ item[1] }}" required>
+               value="{{  }}" required>
     </p>
     <p>
         <label for="month">month</label><br>
         <input type="number" name="month" id="month" min="1" max="12" step="1"
-               value="{{ item[2] }}" required>
+               value="{{ }}" required>
     </p>
     <p>
         <label for="year">year</label><br>
         <input type="number" name="year" id="year" min="1" max="9999" step="1"
-               value="{{ item[4] }}" required>
+               value="{{  }}" required>
     </p>
     {% if item[5] is defined %}
         <p>
@@ -38,10 +37,10 @@
     <p>
         <label for="value">value</label><br>
         <input type="number" name="value" id="value" step="1"
-               value="{{ item[6] }}" required>
+               value="{{  }}" required>
     </p>
     <p>
-        <button type="submit"> Add record </button>
+        <button type="submit"> {{ button_title }} </button>
     </p>
     </form>
 
