@@ -17,7 +17,6 @@ def accounting():
     table = data_manager.get_table_from_file('./accounting/items.csv')
     table_func = copy.deepcopy(table)
     max_profit = common.which_year_max(table_func)
-    #avg_profit_year_result = common.avg_amount(table, year)
     return render_template('accounting.html', table=table, max_profit=max_profit)
 
 
@@ -84,6 +83,14 @@ def del_record(item_id):
 
         data_manager.write_table_to_file('./accounting/items.csv', table)
         return redirect('/accounting')
+
+
+@app.route('/avg_profit_year_result/', methods=['GET', 'POST'])
+def spec_avg_profit_year_result(year):
+    year = request.form.get('year')
+    table = data_manager.get_table_from_file('./accounting/items.csv')
+    avg_profit_year_result = common.avg_amount(table, year)
+    return redirect('/accounting', avg_profit_year_result=avg_profit_year_result)
 
 
 if __name__ == '__main__':

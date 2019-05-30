@@ -14,7 +14,9 @@
             <p>
                 <label for="year">Show average (per item) profit in a given year</label><br>
                 <input type="number" name="year" id="year">
+                <form action="{{ url_for('spec_avg_profit_year_result', year=year) }}" method="post">
                 <button type="submit"> Calculate </button><br>
+                </form>
                 <label for="year">Result: {{ avg_profit_year_result }} </label><br>
 
             </p>
