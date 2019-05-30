@@ -11,20 +11,24 @@
           method="post">
     <p>
         <label for="day">day</label><br>
-        <input type="number" name="day" id="day" min="1" max="31" step="1" required>
+        <input type="number" name="day" id="day" min="1" max="31" step="1"
+               value="{{ record[1] }}" required>
     </p>
     <p>
         <label for="month">month</label><br>
-        <input type="number" name="month" id="month" min="1" max="12" step="1" required>
+        <input type="number" name="month" id="month" min="1" max="12" step="1"
+               value="{{ record[2] }}" required>
     </p>
     <p>
         <label for="year">year</label><br>
-        <input type="number" name="year" id="year" min="1" max="9999" step="1" required>
+        <input type="number" name="year" id="year" min="1" max="9999" step="1"
+               value="{{ record[3] }}" required>
     </p>
 
         <p>
             <label for="trans_dir">transaction direction</label><br>
-            <select name="trans_dir" id="trans_dir"> required>
+            <select name="trans_dir" id="trans_dir">
+                   value="{{ record[4] }}" required>
                 <option value="in">in</option>
                 <option value="out">out</option>
             </select>
@@ -32,7 +36,8 @@
         </p>
     <p>
         <label for="value">value</label><br>
-        <input type="number" name="value" id="value" step="1" required>
+        <input type="number" name="value" id="value" step="1"
+               value="{{ record[5] }}" required>
     </p>
     <p>
         <button type="submit"> {{ button_title }} </button>
