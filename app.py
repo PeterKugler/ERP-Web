@@ -73,6 +73,19 @@ def modify_record(item_id):
     page_title='Modify record', button_title='Modify record', record=record)
 
 
+@app.route('/accounting/delRecord/<item_id>', methods=['GET', 'POST'])
+def del_record(item_id):
+    table = data_manager.get_table_from_file('./accounting/items.csv')
+
+    if request.method == 'POST':
+        for item in table:
+            if item_id in item:
+                table.remove(item)
+
+        data_manager.write_table_to_file('./accounting/items.csv', table)
+        return redirect('/accounting')
+
+
 if __name__ == '__main__':
     app.run(
         host='0.0.0.0',
