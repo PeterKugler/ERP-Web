@@ -1,42 +1,43 @@
-""" Accounting module
-
-Data table structure:
-    * id (string): Unique and random generated identifier
-        at least 2 special characters (except: ';'), 2 number, 2 lower and 2 upper case letters)
-    * month (number): Month of the transaction
-    * day (number): Day of the transaction
-    * year (number): Year of the transaction
-    * type (string): in = income, out = outflow
-    * amount (int): amount of transaction in USD
+""" Common module
+implement commonly used functions here
 """
 
-# everything you'll need is imported:
-# User interface module
-import ui
-# data manager module
-import data_manager
-# common module
-import common
+import random
 
 
-list_labels = ["month", "day", "year", "type", "amount"]
-accounting_file = "accounting/items.csv"
+def generate_random_letter_number_spec_char(letter1, letter2):
+    return chr(random.randint(ord(letter1), ord(letter2)))
 
 
-def start_module():
+def generate_random(table):
     """
-    Starts this module and displays its menu.
-     * User can access default special features from here.
-     * User can go back to main menu from here.
+    Generates random and unique string. Used for id/key generation:
+         - at least 2 special characters (except: ';'), 2 number, 2 lower and 2 upper case letter
+         - it must be unique in the table (first value in every row is the id)
+
+    Args:
+        table (list): Data table to work on. First columns containing the keys.
 
     Returns:
-        None
+        string: Random and unique string
     """
 
-    table = data_manager.get_table_from_file(accounting_file)
+    generated = ''
 
-# special functions:
-# ------------------
+    while generated == '':
+        for i in range(2):
+            generated += generate_random_letter_number_spec_char("a", "z")
+            generated += generate_random_letter_number_spec_char("A", "Z")
+            generated += generate_random_letter_number_spec_char("0", "9")
+            generated += generate_random_letter_number_spec_char("!", "/")
+
+        if generated not in table:
+            return generated
+        else:
+            generated = ''
+            continue
+
+
 
 def years_net_profit(table):
     YEAR = 3
